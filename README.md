@@ -22,7 +22,7 @@ We compare **single-utterance** emotion classification baselines against a **con
 **Explainability**
 - **Utterance-level (local):** LIME, KernelSHAP / SHAP-style explanations, GradSHAP, Optimus token importance (attention-derived diagnostics)
 - **Corpus-level (global):** aggregated token importance per emotion, layer-wise relevance (LIG + LGXA), Logit Lens trajectories
-- **Representation geometry:** **[CLS]/<s> embedding** t-SNE visualizations + quantitative clustering metrics
+- **Representation geometry:** **[CLS] embedding** t-SNE visualizations + quantitative clustering metrics
 
 ---
 
