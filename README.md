@@ -134,32 +134,4 @@ These notebooks produce cumulative contribution curves and coverage-style diagno
 
 ---
 
-## Results & plots in the README
-
-You *can* include plots in the README, but it’s best to keep it **selective**:
-- ✅ 1 confusion matrix (or a single “best epoch” snapshot)
-- ✅ 1 t-SNE (gold labels) + 1 t-SNE (correct vs misclassified)
-- ✅ 1 GradSHAP/SHAP global top-words per emotion
-- ✅ 1 Optimus cumulative curve comparison (e.g., fine-tuned vs RoBERTa-base)
-
-Avoid uploading every intermediate figure (e.g., per-epoch confusion matrices for all runs) directly into the README; keep them in a `results/` folder and link to them instead.
-
----
-
-## Reproducibility notes
-
-- Reported numbers are **Weighted F1 on the test split**.
-- Because training is stochastic, results are reported as the **mean over 5 random seeds**.
-- If you add new runs, keep seeds and data splits fixed to ensure comparability.
-
----
-
-## Acknowledgements
-- HuggingFace Transformers & PyTorch
-- Captum (Integrated Gradients family)
-- SHAP / LIME
-- Optimus (attention-derived interpretability utilities)
-
----
-
 
