@@ -117,7 +117,7 @@ Use `Explainability/Corpus_level_explanation.ipynb` to:
 - connect recurring confusions (from confusion matrices) to missing/overlapping lexical evidence.
 
 ### 3) Layer-wise diagnostics
-Use the layer-wise sections (Captum + Logit Lens) to:
+Use the layer-wise sections (Captum's LGXA/LIG + Logit Lens) to:
 - quantify **where** (which layers) the prediction signal concentrates,
 - check if fine-tuning shifts “decision making” toward later layers.
 
