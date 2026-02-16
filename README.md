@@ -26,7 +26,6 @@ We compare **single-utterance** emotion classification baselines against a **con
 - **Representation geometry:** **[CLS]/<s> embedding** t-SNE visualizations + quantitative clustering metrics
 
 ---
----
 ## Repository structure
 
 Repository structure
@@ -53,7 +52,6 @@ Models/
 └── fine_tuned_iemocap_distilbert_bert_roberta.ipynb
 
 README.md
-```
 ```
 
 ### About the dataset CSVs
