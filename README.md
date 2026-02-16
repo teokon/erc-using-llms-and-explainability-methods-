@@ -27,7 +27,7 @@ We compare **single-utterance** emotion classification baselines against a **con
 
 ---
 ## Repository structure
-
+```text
 Repository structure
 datasets/
 ├── meld/
