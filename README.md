@@ -27,7 +27,7 @@ We benchmark **single-utterance** fine-tuned models (BERT / DistilBERT / RoBERTa
 - **Utterance-level (local):** LIME, (Kernel)SHAP/SHAP-style, GradSHAP.
 - **Corpus-level (global):** aggregated token importance per emotion.
 - **Layer-wise diagnostics:** LIG + LGXA relevance profiles; Logit Lens trajectories.
-- **Representation geometry:** `[CLS]` / `` `<s>` `` embedding t-SNE visualizations + clustering metrics.
+- **Representation geometry:** `[CLS]` / embedding t-SNE visualizations + clustering metrics.
 
 ---
 
