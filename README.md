@@ -27,29 +27,30 @@ We compare **single-utterance** emotion classification baselines against a **con
 ---
 
 ## Repository structure
+```text
+datasets/
+├── meld/
+│   ├── train.csv
+│   ├── val.csv
+│   └── test.csv
+└── iemocap/
+    ├── train.csv
+    ├── val.csv
+    └── test.csv
 
-├── datasets/
-│   ├── meld/
-│   │   ├── train.csv
-│   │   ├── val.csv
-│   │   └── test.csv
-│   └── iemocap/
-│       ├── train.csv
-│       ├── val.csv
-│       └── test.csv
-│
-├── Explainaiblity/
-│   ├── Utterance_explanation.ipynb
-│   ├── Corpus_level_explanation.ipynb
-│   ├── Optimus_Emoberta_Utterance_Level.ipynb
-│   └── Optimus_Corpus_analysis.ipynb
-│
-├── Models/
-│   └── Emoberta_iemocap.ipynb
-│   └── Emoberta_meld
-│   └── fine_tuned_iemocap_distilbert_bert_roberta.ipynb
-│   └── fine_tuned_meld_distilbert_bert_roberta.ipynb
-└── README.md
+Explainability/
+├── Utterance_explanation_github_clean.ipynb
+├── Corpus_level_explanation_github_clean.ipynb
+├── Optimus_Emoberta_Utterance_Level_github_clean_headers_no_gini.ipynb
+└── Optimus_Global_analysis_github_clean_no_gini.ipynb
+
+Models/
+├── Emoberta_meld/
+├── Emoberta_iemocap.ipynb
+├── fine_tuned_meld_distilbert_bert_roberta.ipynb
+└── fine_tuned_iemocap_distilbert_bert_roberta.ipynb
+
+README.md
 ```
 
 ### About the dataset CSVs
