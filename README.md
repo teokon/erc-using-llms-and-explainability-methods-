@@ -29,28 +29,31 @@ We compare **single-utterance** emotion classification baselines against a **con
 
 ## Repository structure
 
-├── datasets/
-│   ├── meld/
-│   │   ├── train.csv
-│   │   ├── val.csv
-│   │   └── test.csv
-│   └── iemocap/
-│       ├── train.csv
-│       ├── val.csv
-│       └── test.csv
-│
-├── Explainaiblity/
-│   ├── Utterance_explanation.ipynb
-│   ├── Corpus_level_explanation.ipynb
-│   ├── Optimus_Emoberta_Utterance_Level.ipynb
-│   └── Optimus_Corpus_analysis.ipynb
-│
-├── Models/
-│   └── Emoberta_iemocap.ipynb
-│   └── Emoberta_meld
-│   └── fine_tuned_iemocap_distilbert_bert_roberta.ipynb
-│   └── fine_tuned_meld_distilbert_bert_roberta.ipynb
-└── README.md
+Repository structure
+datasets/
+├── meld/
+│   ├── train.csv
+│   ├── val.csv
+│   └── test.csv
+└── iemocap/
+    ├── train.csv
+    ├── val.csv
+    └── test.csv
+
+Explainability/
+├── Utterance_explanation.ipynb
+├── Corpus_level_explanation.ipynb
+├── Optimus_Emoberta_Utterance_Level.ipynb
+└── Corpus_level_explanation.ipynb
+
+Models/
+├── Emoberta_meld/
+├── Emoberta_iemocap.ipynb
+├── fine_tuned_meld_distilbert_bert_roberta.ipynb
+└── fine_tuned_iemocap_distilbert_bert_roberta.ipynb
+
+README.md
+
 ```
 
 ### About the dataset CSVs
