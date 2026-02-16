@@ -1,7 +1,6 @@
 # Emotion Recognition in Conversations (ERC) with Transformers & Explainability
 
-This repository contains the code and experiments for **Emotion Recognition in Conversations (ERC)** using **Transformer encoders** and a **multi-level explainability pipeline**.  
-We compare **single-utterance** emotion classification baselines against a **context-aware (EmoBERTa-style)** variant that injects dialogue context and speaker information into the input and progress tp explaianability methods investigate how and why the model make a classifiaction
+This repository contains code and experiments for Emotion Recognition in Conversations (ERC) using Transformer-based text encoders and a multi-level explainability pipeline. We study ERC on MELD and IEMOCAP, comparing single-utterance emotion classifiers (fine-tuned BERT/DistilBERT/RoBERTa baselines) against a context-aware variant (EmoBERTa-style) that incorporates dialogue history and speaker cues by constructing contextualized inputs. Beyond performance (e.g., weighted F1 on test splits), we provide interpretability analyses at multiple granularities, including utterance-level explanations (Optimus), corpus-level token importance (e.g., GradSHAP/KernelSHAP-style global profiles), and representation/geometry diagnostics (layer-wise analyses, logit-lens trends, and CLS embedding visualizations with clustering metrics). The goal is to quantify how context and fine-tuning affect both accuracy and the evidence used by the model in conversational settings.
 
 ---
 
