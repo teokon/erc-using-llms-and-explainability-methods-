@@ -101,11 +101,11 @@ Typical hyperparameters used in this project:
 - Input: context-constructed text (either generated on-the-fly or loaded from a precomputed CSV, depending on your workflow)
 
 ---
-
+Use `Explainability/Utterance_explanation.ipynb` to:
 ## Explainability workflow (how to reproduce)
 
 ### 1) Utterance-level analysis
-Use `Explainability/Utterance_explanation.ipynb` to:
+
 - run local explanations on selected examples (LIME / SHAP / GradSHAP),
 - compare **single-utterance vs context-aware** ,
 - visualize which words/tokens contribute most to a specific prediction.
