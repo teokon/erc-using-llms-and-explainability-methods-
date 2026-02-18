@@ -1,6 +1,35 @@
 # Emotion Recognition in Conversations (ERC) with Transformers & Explainability
 
 This repository contains code and experiments for Emotion Recognition in Conversations (ERC) using Transformer-based text encoders and a multi-level explainability pipeline. We study ERC on MELD and IEMOCAP, comparing single-utterance emotion classifiers (fine-tuned BERT/DistilBERT/RoBERTa baselines) against a context-aware variant (EmoBERTa-style) that incorporates dialogue history and speaker cues by constructing contextualized inputs. Beyond performance (e.g., weighted F1 on test splits), we provide interpretability analyses at multiple granularities, including utterance-level explanations , corpus-level token importance (e.g., GradSHAP-style global profiles), and representation/geometry diagnostics (layer-wise analyses, logit-lens trends, and CLS embedding visualizations with clustering metrics). The goal is to quantify how context and fine-tuning affect both accuracy and the evidence used by the model in conversational settings.
+flowchart TB
+  A[(Datasets<br/>IEMOCAP & MELD)] --> B[Data loading + label mapping<br/>(CSV/JSON → labels)]
+  B --> C[Preprocessing<br/>(clean text, speaker IDs, splits)]
+  
+  C --> D{Input formation}
+  D -->|EmoBERTa context| E[Context builder<br/>(target-sep-only with spaces around &lt;/s&gt;)]
+  D -->|Standard fine-tuning| F[Baseline text input<br/>(utterance / dialogue text)]
+
+  E --> G[Tokenization + encoding<br/>(HF tokenizer)]
+  F --> G
+
+  G --> H[Model selection<br/>DistilBERT / BERT / RoBERTa / EmoBERTa]
+  H --> I[Fine-tuning<br/>(HF Trainer, LR/BS/epochs)]
+  I --> J[Evaluation<br/>Weighted F1]
+  J --> K[Repeat over 5 random seeds<br/>report mean Weighted F1]
+  K --> L[Results summary + best model per dataset]
+  L --> M[(Saved outputs<br/>checkpoints / logs / metrics)]
+
+  subgraph Notebooks_in_repo[Notebooks in this repo]
+    N1[Correct_emoberta_iemocap.ipynb<br/>(EmoBERTa on IEMOCAP)]
+    N2[emoberta_roberta_meld.ipynb<br/>(EmoBERTa/RoBERTa on MELD)]
+    N3[fine_tuned_bert_iemocap.ipynb<br/>(BERT/DistilBERT/RoBERTa on IEMOCAP)]
+    N4[fine_tuned_bert_meld.ipynb<br/>(BERT/DistilBERT/RoBERTa on MELD)]
+  end
+
+  N1 --> E
+  N2 --> E
+  N3 --> F
+  N4 --> F
 
 ---
 
