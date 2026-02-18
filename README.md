@@ -71,7 +71,7 @@ pip install torch transformers pandas numpy scikit-learn matplotlib shap lime ca
 > Notes:
 > - Notebooks were originally run in **Google Colab**. If paths point to Drive (e.g., `/content/drive/...`), replace them with your local paths.
 > - GPU is recommended for training and for some explainability runs.
-
+> - For our experiments we used NVIDIA A100 for Fine-tuning and NVIDIA L4 for explainability
 ---
 
 ## Training & evaluation
