@@ -98,7 +98,7 @@ Typical hyperparameters used in this project:
 - **Metric:** Weighted F1 on the test split  
 - **Reporting:** mean over **5 random seeds**
 
-- Input: context-constructed text (either generated on-the-fly or loaded from a precomputed CSV, depending on your workflow)
+- Input: context-constructed text (In order to construct on-the-fly the context-constructed dataset run the Models/Emoberta_X.ipynb )
 
 ---
 
