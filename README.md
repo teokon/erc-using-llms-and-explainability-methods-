@@ -2,45 +2,9 @@
 
 This repository contains code and experiments for Emotion Recognition in Conversations (ERC) using Transformer-based text encoders and a multi-level explainability pipeline. We study ERC on MELD and IEMOCAP, comparing single-utterance emotion classifiers (fine-tuned BERT/DistilBERT/RoBERTa baselines) against a context-aware variant (EmoBERTa-style) that incorporates dialogue history and speaker cues by constructing contextualized inputs. Beyond performance (e.g., weighted F1 on test splits), we provide interpretability analyses at multiple granularities, including utterance-level explanations , corpus-level token importance (e.g., GradSHAP-style global profiles), and representation/geometry diagnostics (layer-wise analyses, logit-lens trends, and CLS embedding visualizations with clustering metrics). The goal is to quantify how context and fine-tuning affect both accuracy and the evidence used by the model in conversational settings.
 
-```mermaid
-flowchart TB
-  A["Datasets<br/>IEMOCAP, MELD"]:::top --> B["Selection of pre-trained<br/>Transformer model"]:::top
-  B --> C{"Two training setups"}:::decision
+## Block Diagram of the Pipeline
+![Framework](Block Diagram of the Pipeline.svg)
 
-  C --> D["Fine-tuning<br/>(single-utterance baseline)"]:::train
-  C --> E["EmoBERTa<br/>(context-aware model)"]:::train
-
-  D --> F["Report results and select best model<br/>(Metric: Weighted F1)"]:::eval
-  E --> F
-
-  F --> G["Use main explainability techniques"]:::eval
-
-  subgraph X["Explainability methods"]
-    direction LR
-    X1["LIME"]:::xai
-    X2["GradSHAP"]:::xai
-    X3["Optimus"]:::xai
-    X4["LIG"]:::xai
-    X5["LGXA"]:::xai
-    X6["Logit-Lens"]:::xai
-    X7["t-SNE"]:::xai
-  end
-
-  G --> X1
-  G --> X2
-  G --> X3
-  G --> X4
-  G --> X5
-  G --> X6
-  G --> X7
-
-  classDef top fill:#eef2ff,stroke:#6b73ff,stroke-width:1px,color:#111;
-  classDef decision fill:#eef2ff,stroke:#6b73ff,stroke-width:1px,color:#111;
-  classDef train fill:#f3f4ff,stroke:#6b73ff,stroke-width:1px,color:#111;
-  classDef eval fill:#e9f7ff,stroke:#2f80ed,stroke-width:1px,color:#111;
-  classDef xai fill:#fff7e6,stroke:#f2c94c,stroke-width:1px,color:#111;
-
-```
 
 ---
 
