@@ -4,25 +4,26 @@ This repository contains code and experiments for Emotion Recognition in Convers
 
 ```mermaid
 flowchart TB
-  A["Datasets\n(IEMOCAP, MELD)"] --> B["Selection of pre-trained\nTransformer model"]
-  B --> C{"Two training setups"}
+  A["Datasets<br/>IEMOCAP, MELD"]:::top --> B["Selection of pre-trained<br/>Transformer model"]:::top
+  B --> C{"Two training setups"}:::decision
 
-  C --> D["Fine-tuning\n(single-utterance baseline)"]
-  C --> E["EmoBERTa\n(context-aware model)"]
+  C --> D["Fine-tuning<br/>(single-utterance baseline)"]:::train
+  C --> E["EmoBERTa<br/>(context-aware model)"]:::train
 
-  D --> F["Report results and\nselect best model\n(Metric: Weighted F1)"]
+  D --> F["Report results and select best model<br/>(Metric: Weighted F1)"]:::eval
   E --> F
 
-  F --> G["Use main explainability techniques"]
+  F --> G["Use main explainability techniques"]:::eval
 
   subgraph X["Explainability methods"]
-    X1["LIME"]
-    X2["GradSHAP"]
-    X3["Optimus"]
-    X4["LIG"]
-    X5["LGXA"]
-    X6["Logit-Lens"]
-    X7["t-SNE"]
+    direction LR
+    X1["LIME"]:::xai
+    X2["GradSHAP"]:::xai
+    X3["Optimus"]:::xai
+    X4["LIG"]:::xai
+    X5["LGXA"]:::xai
+    X6["Logit-Lens"]:::xai
+    X7["t-SNE"]:::xai
   end
 
   G --> X1
@@ -33,6 +34,11 @@ flowchart TB
   G --> X6
   G --> X7
 
+  classDef top fill:#eef2ff,stroke:#6b73ff,stroke-width:1px,color:#111;
+  classDef decision fill:#eef2ff,stroke:#6b73ff,stroke-width:1px,color:#111;
+  classDef train fill:#f3f4ff,stroke:#6b73ff,stroke-width:1px,color:#111;
+  classDef eval fill:#e9f7ff,stroke:#2f80ed,stroke-width:1px,color:#111;
+  classDef xai fill:#fff7e6,stroke:#f2c94c,stroke-width:1px,color:#111;
 
 ```
 
