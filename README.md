@@ -100,6 +100,8 @@ Typical hyperparameters used in this project:
 
 - Input: context-constructed text (In order to construct on-the-fly the context-constructed dataset run the Models/Emoberta_X.ipynb )
 
+We report the mean weighted F1 over 5 random seeds.
+
   | Model                 | Dataset | Weighted F1 |
   | --------------------- | ------- | ----------: |
   | Emoberta              | MELD    |     0.63905 |
@@ -111,7 +113,6 @@ Typical hyperparameters used in this project:
   | Fine Tuned DistilBERT | MELD    |    0.612383 |
   | Fine Tuned DistilBERT | IEMOCAP |    0.527937 |
 
-We report the mean weighted F1 over 5 random seeds.
 ---
 
 ## Explainability workflow (how to reproduce)
