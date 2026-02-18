@@ -7,7 +7,7 @@ flowchart TB
   B --> C[Preprocessing<br/>(clean text, speaker IDs, splits)]
   
   C --> D{Input formation}
-  D -->|EmoBERTa context| E[Context builder<br/>(target-sep-only with spaces around &lt;/s&gt;)]
+  D -->|EmoBERTa context| E[Context builder<br/>(target-sep-only with spaces around </s>)]
   D -->|Standard fine-tuning| F[Baseline text input<br/>(utterance / dialogue text)]
 
   E --> G[Tokenization + encoding<br/>(HF tokenizer)]
