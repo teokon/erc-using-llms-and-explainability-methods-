@@ -4,34 +4,35 @@ This repository contains code and experiments for Emotion Recognition in Convers
 
 ```mermaid
 flowchart TB
-  A[(Datasets\nIEMOCAP and MELD)] --> B["Data loading + label mapping\n(CSV/JSON to labels)"]
-  B --> C["Preprocessing\n(clean text, speaker IDs, splits)"]
+  A["Datasets\n(IEMOCAP, MELD)"] --> B["Selection of pre-trained\nTransformer model"]
+  B --> C{"Two training setups"}
 
-  C --> D{"Input formation"}
-  D -->|EmoBERTa context| E["Context builder\n(target-sep-only, spaces around SEP token)"]
-  D -->|Standard fine-tuning| F["Baseline text input\n(utterance or dialogue text)"]
+  C --> D["Fine-tuning\n(single-utterance baseline)"]
+  C --> E["EmoBERTa\n(context-aware model)"]
 
-  E --> G["Tokenization + encoding\n(HF tokenizer)"]
-  F --> G
+  D --> F["Report results and\nselect best model\n(Metric: Weighted F1)"]
+  E --> F
 
-  G --> H["Model selection\nDistilBERT, BERT, RoBERTa, EmoBERTa"]
-  H --> I["Fine-tuning\n(HF Trainer, LR/BS/epochs)"]
-  I --> J["Evaluation\n(Weighted F1)"]
-  J --> K["5 random seeds\n(report mean Weighted F1)"]
-  K --> L["Results summary\n(best model per dataset)"]
-  L --> M[(Saved outputs\ncheckpoints, logs, metrics)]
+  F --> G["Use main explainability techniques"]
 
-  subgraph Notebooks_in_repo["Notebooks in this repo"]
-    N1["Correct_emoberta_iemocap.ipynb\n(EmoBERTa on IEMOCAP)"]
-    N2["emoberta_roberta_meld.ipynb\n(EmoBERTa/RoBERTa on MELD)"]
-    N3["fine_tuned_bert_iemocap.ipynb\n(BERT/DistilBERT/RoBERTa on IEMOCAP)"]
-    N4["fine_tuned_bert_meld.ipynb\n(BERT/DistilBERT/RoBERTa on MELD)"]
+  subgraph X["Explainability methods"]
+    X1["LIME"]
+    X2["GradSHAP"]
+    X3["Optimus"]
+    X4["LIG"]
+    X5["LGXA"]
+    X6["Logit-Lens"]
+    X7["t-SNE"]
   end
 
-  N1 --> E
-  N2 --> E
-  N3 --> F
-  N4 --> F
+  G --> X1
+  G --> X2
+  G --> X3
+  G --> X4
+  G --> X5
+  G --> X6
+  G --> X7
+
 
 ```
 
