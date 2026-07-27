@@ -463,8 +463,6 @@ Released under the **MIT License** (see [`LICENSE`](LICENSE)). The Optimus libra
 
 ## Citation
 
-If you use this code, please cite the paper (IEEE Access, Access-2026-23773). A BibTeX entry will be
-added here upon publication.
 
 ---
 
