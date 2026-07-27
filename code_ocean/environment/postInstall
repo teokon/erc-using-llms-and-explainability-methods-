@@ -4,6 +4,10 @@
 # IMPORTANT: Code Ocean builds the environment image BEFORE /code is mounted, so this script
 # cannot read files under /code (e.g. a requirements.txt there). Install packages directly.
 #
-# The capsule's figure/table scripts only need these (no torch/transformers/Optimus):
+# - pandas/scipy/matplotlib/python-docx: the artifact-based figure/table scripts (code_ocean/run).
+# - transformers/captum/lime: only needed for the LIVE explainer run (code_ocean/run_explainers.sh),
+#   which actually computes LIME + GradSHAP. torch is already in the base image. (Optimus is NOT
+#   installed here; the live run uses gradshap,lime,random only.)
 set -e
 pip install pandas scipy matplotlib python-docx
+pip install transformers captum lime

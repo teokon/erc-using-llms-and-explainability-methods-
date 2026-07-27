@@ -53,6 +53,31 @@ bash code_ocean/stage_data.sh ./checkpoints   # copies the needed subset into ./
 
 then attach `capsule_data/` as the capsule's `/data`.
 
+## Optional: run the explainers live (LIME + GradSHAP)
+
+`code_ocean/run` only replays saved attributions. To **actually compute** LIME + GradSHAP (+ Random)
+on the context-aware model and score their ERASER faithfulness, use `code_ocean/run_explainers.sh`.
+It needs more inputs and compute:
+
+1. **Stage the model checkpoints** into `/data` (~8 GB) as well:
+   ```bash
+   WITH_MODELS=1 bash code_ocean/stage_data.sh ./checkpoints
+   ```
+   This adds `emoberta_meld_large/roberta_meld_final_seed42_BEST` (+ its test CSV) and the IEMOCAP
+   equivalent to `capsule_data/`.
+2. The environment already installs `transformers`, `captum`, `lime` (see `environment/postInstall`);
+   `torch` is in the base image.
+3. Set the capsule's run command to `bash code_ocean/run_explainers.sh` (or call it from `/code/run`).
+
+Tunables: `ERC_LIMIT` = number of test examples to explain (default **100**; `0` = full corpus),
+`ERC_LIME_SAMPLES` = LIME perturbations/example (default 100). A **GPU** machine type is strongly
+recommended — on CPU keep `ERC_LIMIT` small (LIME does ~100 forward passes per example on
+RoBERTa-large). Output: `/results/faithfulness_live/faithfulness_{meld,iemocap}_context_summary.csv`
+plus the saved attributions, showing each explainer's faithfulness vs. the Random baseline.
+
+Optimus is intentionally excluded from the live run (it needs the vendored library + `numpy<2` and is
+far more expensive); its results are provided via the saved-artifact path above.
+
 ## Notes
 
 - Paths are resolved by `erc_paths.py` from the `ERC_CHECKPOINTS` / `ERC_RESULTS` environment
