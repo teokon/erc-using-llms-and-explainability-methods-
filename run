@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Code Ocean reproducible-run entrypoint.
+#
+# Code Ocean executes the file named `run` at the top of /code. The actual capsule logic lives in
+# code_ocean/run (reproduces the explainability figures/tables from the saved artifacts in /data);
+# this thin wrapper just delegates to it. See code_ocean/REPRODUCING.md.
+exec bash "$(dirname "$0")/code_ocean/run"
