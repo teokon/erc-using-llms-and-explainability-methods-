@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Code Ocean environment post-install hook.
+#
+# IMPORTANT: Code Ocean builds the environment image BEFORE /code is mounted, so this script
+# cannot read files under /code (e.g. a requirements.txt there). Install packages directly.
+#
+# The capsule's figure/table scripts only need these (no torch/transformers/Optimus):
+set -e
+pip install pandas scipy matplotlib python-docx

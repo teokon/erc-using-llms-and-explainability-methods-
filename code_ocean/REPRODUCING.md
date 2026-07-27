@@ -40,6 +40,10 @@ pip install -r code_ocean/environment/requirements.txt
 ERC_CHECKPOINTS=./checkpoints ERC_RESULTS=./results bash code_ocean/run
 ```
 
+> **Code Ocean note:** the environment image is built *before* `/code` is mounted, so the capsule's
+> `environment/postInstall` cannot `pip install -r /code/...`. Install the packages directly there —
+> see `code_ocean/environment/postInstall` (`pip install pandas scipy matplotlib python-docx`).
+
 In a Code Ocean capsule the entrypoint is `code_ocean/run`; it defaults to `ERC_CHECKPOINTS=/data`
 and `ERC_RESULTS=/results`. To assemble the `/data` folder from a full `checkpoints/` directory, use:
 
