@@ -1,0 +1,24 @@
+# Python dependencies for the ERC + explainability pipeline.
+# Tested with Python 3.10. The Optimus attention explainer is VENDORED under
+# third_party/optimus/ (a patched fork, not pip-installable) — see its PATCHES.md.
+#
+# numpy is held < 2.0 because the Optimus / TensorFlow-era stack the explainers run in
+# expects the 1.26 ABI. torch is listed without a CUDA suffix; install the build matching
+# your platform (e.g. a CUDA wheel on GPU, the CPU wheel for the figure-only Code Ocean run).
+
+# --- training + explainers (GPU recommended) ---
+torch==2.5.1
+transformers==4.46.3        # explainer/Optimus stack (training was run with 4.57.1; see README)
+datasets>=2.19
+optuna>=3.6
+captum>=0.7
+lime>=0.2.0.1
+
+# --- data / metrics / plotting (also all that the Code Ocean figure capsule needs) ---
+numpy>=1.26,<2.0
+pandas>=2.0
+scipy>=1.11
+scikit-learn>=1.3
+matplotlib>=3.7
+umap-learn>=0.5
+python-docx>=1.1

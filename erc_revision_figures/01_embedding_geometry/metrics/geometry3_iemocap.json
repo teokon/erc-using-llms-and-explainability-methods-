@@ -1,0 +1,209 @@
+{
+  "dataset": "iemocap",
+  "n": 1622,
+  "n_seeds": 5,
+  "pretrained": {
+    "original_space": {
+      "silhouette": -0.05802695080637932,
+      "davies_bouldin": 24.707082307875424,
+      "calinski_harabasz": 4.709049664746773,
+      "knn_acc": 0.2928483353884094,
+      "knn_macro_f1": 0.25796843563094035
+    },
+    "projections": {
+      "pca": {
+        "silhouette": {
+          "mean": -0.07545642554759979,
+          "std": 0.0
+        },
+        "davies_bouldin": {
+          "mean": 58.631332409781784,
+          "std": 0.0
+        },
+        "calinski_harabasz": {
+          "mean": 4.981849684827075,
+          "std": 0.0
+        },
+        "trustworthiness": {
+          "mean": 0.9420717622574444,
+          "std": 0.0
+        },
+        "n_seeds": 1
+      },
+      "tsne": {
+        "silhouette": {
+          "mean": -0.04698585346341133,
+          "std": 0.000774194884345109
+        },
+        "davies_bouldin": {
+          "mean": 35.12604088394967,
+          "std": 2.6742981737097957
+        },
+        "calinski_harabasz": {
+          "mean": 5.311193366820122,
+          "std": 0.15303968343350444
+        },
+        "trustworthiness": {
+          "mean": 0.982879155772461,
+          "std": 0.00029463317228693974
+        },
+        "n_seeds": 5
+      },
+      "umap": {
+        "silhouette": {
+          "mean": -0.06685678362846374,
+          "std": 0.0021169289340328807
+        },
+        "davies_bouldin": {
+          "mean": 24.189088862854224,
+          "std": 2.425251498441977
+        },
+        "calinski_harabasz": {
+          "mean": 4.384021694469067,
+          "std": 0.5814928276182356
+        },
+        "trustworthiness": {
+          "mean": 0.9756442903233358,
+          "std": 0.0006027158971735983
+        },
+        "n_seeds": 5
+      }
+    }
+  },
+  "single_ft": {
+    "original_space": {
+      "silhouette": 0.0023453242611140013,
+      "davies_bouldin": 8.043855257519864,
+      "calinski_harabasz": 52.05497488413824,
+      "knn_acc": 0.5135635018495684,
+      "knn_macro_f1": 0.4739475365530165
+    },
+    "projections": {
+      "pca": {
+        "silhouette": {
+          "mean": -0.1006922796368599,
+          "std": 0.0
+        },
+        "davies_bouldin": {
+          "mean": 18.04402247999661,
+          "std": 0.0
+        },
+        "calinski_harabasz": {
+          "mean": 154.57800165030645,
+          "std": 0.0
+        },
+        "trustworthiness": {
+          "mean": 0.8150897076189018,
+          "std": 0.0
+        },
+        "n_seeds": 1
+      },
+      "tsne": {
+        "silhouette": {
+          "mean": -0.041951248049736024,
+          "std": 0.0005039826426293929
+        },
+        "davies_bouldin": {
+          "mean": 9.598997482177387,
+          "std": 0.14028967732227146
+        },
+        "calinski_harabasz": {
+          "mean": 180.26675231848986,
+          "std": 0.4787858403235157
+        },
+        "trustworthiness": {
+          "mean": 0.9665538159365678,
+          "std": 9.092823681046842e-05
+        },
+        "n_seeds": 5
+      },
+      "umap": {
+        "silhouette": {
+          "mean": -0.05354196801781654,
+          "std": 0.005979071314271407
+        },
+        "davies_bouldin": {
+          "mean": 22.77429481121421,
+          "std": 6.1033550900713305
+        },
+        "calinski_harabasz": {
+          "mean": 126.84493465536937,
+          "std": 10.44400652634399
+        },
+        "trustworthiness": {
+          "mean": 0.9555139781628503,
+          "std": 0.0005279231257459741
+        },
+        "n_seeds": 5
+      }
+    }
+  },
+  "context_aware": {
+    "original_space": {
+      "silhouette": 0.07823958247900009,
+      "davies_bouldin": 3.125057968692769,
+      "calinski_harabasz": 211.57950084637653,
+      "knn_acc": 0.7231812577065352,
+      "knn_macro_f1": 0.7113100592090279
+    },
+    "projections": {
+      "pca": {
+        "silhouette": {
+          "mean": -0.028633682057261467,
+          "std": 0.0
+        },
+        "davies_bouldin": {
+          "mean": 3.231091636390895,
+          "std": 0.0
+        },
+        "calinski_harabasz": {
+          "mean": 633.7370283565037,
+          "std": 0.0
+        },
+        "trustworthiness": {
+          "mean": 0.8927758032929571,
+          "std": 0.0
+        },
+        "n_seeds": 1
+      },
+      "tsne": {
+        "silhouette": {
+          "mean": 0.10551881045103073,
+          "std": 0.00031809482187539515
+        },
+        "davies_bouldin": {
+          "mean": 2.420816320437079,
+          "std": 0.006050432079532107
+        },
+        "calinski_harabasz": {
+          "mean": 521.6018715277951,
+          "std": 5.456359040788213
+        },
+        "trustworthiness": {
+          "mean": 0.990019529938294,
+          "std": 5.83437056352561e-05
+        },
+        "n_seeds": 5
+      },
+      "umap": {
+        "silhouette": {
+          "mean": 0.09132180660963059,
+          "std": 0.005303746569640844
+        },
+        "davies_bouldin": {
+          "mean": 4.582023155319515,
+          "std": 1.8899764187275043
+        },
+        "calinski_harabasz": {
+          "mean": 460.37719598481635,
+          "std": 36.22807343836596
+        },
+        "trustworthiness": {
+          "mean": 0.9862255026685286,
+          "std": 0.0002203618693139469
+        },
+        "n_seeds": 5
+      }
+    }
+  }
+}

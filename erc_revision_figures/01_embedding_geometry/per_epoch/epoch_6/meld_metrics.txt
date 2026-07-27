@@ -1,0 +1,15 @@
+MELD — epoch 6
+
+ORIGINAL 1024-d space (primary evidence, no projection):
+  silhouette         +0.0488
+  davies_bouldin     4.014   (lower better)
+  calinski_harabasz  99.1
+  dunn               0.1750   (higher better)
+  test accuracy      0.6559   [model head]
+  kNN probe acc      0.6651
+  kNN probe macro-F1 0.4823
+
+2-d projections (robustness):
+  PCA    silhouette +0.0397 ± 0.0000 (1 seed(s)) | trustworthiness 0.8363
+  t-SNE  silhouette +0.0096 ± 0.0003 (5 seed(s)) | trustworthiness 0.9783
+  UMAP   silhouette +0.0285 ± 0.0004 (5 seed(s)) | trustworthiness 0.9535

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Code Ocean entrypoint — reproduce the paper's explainability figures and tables from the
+# SAVED attributions in the capsule's /data. CPU-only, a few minutes, no training / no GPU /
+# no Optimus recomputation (the expensive parts were run once; only their artifacts are read).
+#
+# Inputs  : $ERC_CHECKPOINTS (default /data)  — saved scores + summaries (see REPRODUCING.md).
+# Outputs : $ERC_RESULTS      (default /results) — figures and tables.
+set -euo pipefail
+
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export ERC_CHECKPOINTS="${ERC_CHECKPOINTS:-/data}"
+export ERC_RESULTS="${ERC_RESULTS:-/results}"
+export PYTHONPATH="$REPO:${PYTHONPATH:-}"
+mkdir -p "$ERC_RESULTS"
+cd "$REPO"
+echo "[capsule] repo=$REPO  inputs=$ERC_CHECKPOINTS  outputs=$ERC_RESULTS"
+
+run () { echo "== $1 =="; python "Explainability/$1" || echo "  [warn] $1 failed (missing inputs?)"; }
+
+run paper_plots_from_scores.py       # cumulative contribution + Coverage@10% (single-FT vs RoBERTa-base)
+run explanation_figures.py           # faithfulness metrics/curves + agreement figures (notes 5 & 7)
+run explanation_agreement_matrix.py  # cross-method Spearman / top-20% Jaccard matrices (note 7)
+run build_note7_context.py           # note-7 agreement response for the context-aware model
+
+# build_reviewer_response.py assembles the full reviewer-response .docx but needs the training-result
+# CSVs + all figures (not part of the minimal capsule /data); run it against a full ./checkpoints:
+#     python Explainability/build_reviewer_response.py
+
+echo "[capsule] done -> $ERC_RESULTS"
