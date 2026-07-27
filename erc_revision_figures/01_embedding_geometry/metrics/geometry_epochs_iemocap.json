@@ -1,0 +1,358 @@
+{
+  "dataset": "iemocap",
+  "n": 1622,
+  "stages": {
+    "epoch 0": {
+      "original_space": {
+        "silhouette": -0.0024791851174086332,
+        "davies_bouldin": 6.6394466225134146,
+        "calinski_harabasz": 21.825248740528544,
+        "dunn": 0.13020601682938582,
+        "knn_acc": 0.6189889025893958,
+        "knn_macro_f1": 0.621372054753182,
+        "pred_source": "k-NN probe (no trained head)",
+        "test_accuracy": 0.6189889025893958
+      },
+      "projections": {
+        "pca": {
+          "silhouette": {
+            "mean": -0.05554453283548355,
+            "std": 0.0
+          },
+          "trustworthiness": {
+            "mean": 0.9021202014166401
+          },
+          "n_seeds": 1
+        },
+        "tsne": {
+          "silhouette": {
+            "mean": -0.08250196874141694,
+            "std": 0.0010814029429336524
+          },
+          "trustworthiness": {
+            "mean": 0.9991472835195182
+          },
+          "n_seeds": 5
+        },
+        "umap": {
+          "silhouette": {
+            "mean": -0.1019010841846466,
+            "std": 0.01351322604953797
+          },
+          "trustworthiness": {
+            "mean": 0.9977499162426993
+          },
+          "n_seeds": 5
+        }
+      }
+    },
+    "epoch 1": {
+      "original_space": {
+        "silhouette": 0.01983652077615261,
+        "davies_bouldin": 4.517131923681215,
+        "calinski_harabasz": 164.95962873961358,
+        "dunn": 0.12165730650273011,
+        "knn_acc": 0.62577065351418,
+        "knn_macro_f1": 0.6336463781320996,
+        "pred_source": "model head",
+        "test_accuracy": 0.5055487053020962
+      },
+      "projections": {
+        "pca": {
+          "silhouette": {
+            "mean": -0.03854207694530487,
+            "std": 0.0
+          },
+          "trustworthiness": {
+            "mean": 0.9542529712254816
+          },
+          "n_seeds": 1
+        },
+        "tsne": {
+          "silhouette": {
+            "mean": -0.012929899618029594,
+            "std": 0.00174066460093877
+          },
+          "trustworthiness": {
+            "mean": 0.9996241839659552
+          },
+          "n_seeds": 5
+        },
+        "umap": {
+          "silhouette": {
+            "mean": -0.07938235998153687,
+            "std": 0.01355346574328463
+          },
+          "trustworthiness": {
+            "mean": 0.9993031699595856
+          },
+          "n_seeds": 5
+        }
+      }
+    },
+    "epoch 2": {
+      "original_space": {
+        "silhouette": 0.028307266533374786,
+        "davies_bouldin": 3.6169485683314977,
+        "calinski_harabasz": 206.68160049275315,
+        "dunn": 0.21986533011160056,
+        "knn_acc": 0.6405672009864365,
+        "knn_macro_f1": 0.6455036935568806,
+        "pred_source": "model head",
+        "test_accuracy": 0.5887792848335388
+      },
+      "projections": {
+        "pca": {
+          "silhouette": {
+            "mean": -0.00046522903721779585,
+            "std": 0.0
+          },
+          "trustworthiness": {
+            "mean": 0.9737663307547981
+          },
+          "n_seeds": 1
+        },
+        "tsne": {
+          "silhouette": {
+            "mean": 0.027476906403899194,
+            "std": 0.0007149079255518694
+          },
+          "trustworthiness": {
+            "mean": 0.9996247596175063
+          },
+          "n_seeds": 5
+        },
+        "umap": {
+          "silhouette": {
+            "mean": -0.08849508911371232,
+            "std": 0.013706349360288653
+          },
+          "trustworthiness": {
+            "mean": 0.9993689707695654
+          },
+          "n_seeds": 5
+        }
+      }
+    },
+    "epoch 3": {
+      "original_space": {
+        "silhouette": 0.041773196309804916,
+        "davies_bouldin": 3.636558176055662,
+        "calinski_harabasz": 200.7387557784222,
+        "dunn": 0.1513110528644521,
+        "knn_acc": 0.7163995067817509,
+        "knn_macro_f1": 0.7160418170863498,
+        "pred_source": "model head",
+        "test_accuracy": 0.6485819975339088
+      },
+      "projections": {
+        "pca": {
+          "silhouette": {
+            "mean": 0.023304451256990433,
+            "std": 0.0
+          },
+          "trustworthiness": {
+            "mean": 0.9168401872325859
+          },
+          "n_seeds": 1
+        },
+        "tsne": {
+          "silhouette": {
+            "mean": 0.031153956428170204,
+            "std": 0.0013913136693729617
+          },
+          "trustworthiness": {
+            "mean": 0.9971004584872721
+          },
+          "n_seeds": 5
+        },
+        "umap": {
+          "silhouette": {
+            "mean": -0.035418381169438365,
+            "std": 0.004666752044274014
+          },
+          "trustworthiness": {
+            "mean": 0.9950553604096797
+          },
+          "n_seeds": 5
+        }
+      }
+    },
+    "epoch 4": {
+      "original_space": {
+        "silhouette": 0.06079947203397751,
+        "davies_bouldin": 3.5562327927663433,
+        "calinski_harabasz": 213.05982572284415,
+        "dunn": 0.15660626867729238,
+        "knn_acc": 0.7293464858199753,
+        "knn_macro_f1": 0.7254849044700284,
+        "pred_source": "model head",
+        "test_accuracy": 0.6528976572133169
+      },
+      "projections": {
+        "pca": {
+          "silhouette": {
+            "mean": 0.05138864740729332,
+            "std": 0.0
+          },
+          "trustworthiness": {
+            "mean": 0.9163050999273528
+          },
+          "n_seeds": 1
+        },
+        "tsne": {
+          "silhouette": {
+            "mean": 0.07377104312181473,
+            "std": 0.00028386104719918526
+          },
+          "trustworthiness": {
+            "mean": 0.9950997623326628
+          },
+          "n_seeds": 5
+        },
+        "umap": {
+          "silhouette": {
+            "mean": 0.026067260280251504,
+            "std": 0.005166387427058977
+          },
+          "trustworthiness": {
+            "mean": 0.9921922154256964
+          },
+          "n_seeds": 5
+        }
+      }
+    },
+    "epoch 5": {
+      "original_space": {
+        "silhouette": 0.06822247803211212,
+        "davies_bouldin": 3.2217108796344593,
+        "calinski_harabasz": 209.73608266748266,
+        "dunn": 0.1880534160259192,
+        "knn_acc": 0.7318125770653514,
+        "knn_macro_f1": 0.7266430977733626,
+        "pred_source": "model head",
+        "test_accuracy": 0.6683107274969173
+      },
+      "projections": {
+        "pca": {
+          "silhouette": {
+            "mean": 0.07043418288230896,
+            "std": 0.0
+          },
+          "trustworthiness": {
+            "mean": 0.9327316623320105
+          },
+          "n_seeds": 1
+        },
+        "tsne": {
+          "silhouette": {
+            "mean": 0.09191529899835586,
+            "std": 0.0006725942614129793
+          },
+          "trustworthiness": {
+            "mean": 0.9930513638528435
+          },
+          "n_seeds": 5
+        },
+        "umap": {
+          "silhouette": {
+            "mean": 0.04148174449801445,
+            "std": 0.004556647027190642
+          },
+          "trustworthiness": {
+            "mean": 0.9896168885419628
+          },
+          "n_seeds": 5
+        }
+      }
+    },
+    "epoch 6": {
+      "original_space": {
+        "silhouette": 0.07823958247900009,
+        "davies_bouldin": 3.125057968692769,
+        "calinski_harabasz": 211.57950084637653,
+        "dunn": 0.20792184034604078,
+        "knn_acc": 0.7231812577065352,
+        "knn_macro_f1": 0.7113100592090279,
+        "pred_source": "model head",
+        "test_accuracy": 0.6720098643649816
+      },
+      "projections": {
+        "pca": {
+          "silhouette": {
+            "mean": -0.028633682057261467,
+            "std": 0.0
+          },
+          "trustworthiness": {
+            "mean": 0.8927758032929571
+          },
+          "n_seeds": 1
+        },
+        "tsne": {
+          "silhouette": {
+            "mean": 0.10551881045103073,
+            "std": 0.00031809482187539515
+          },
+          "trustworthiness": {
+            "mean": 0.990019529938294
+          },
+          "n_seeds": 5
+        },
+        "umap": {
+          "silhouette": {
+            "mean": 0.09132180660963059,
+            "std": 0.005303746569640844
+          },
+          "trustworthiness": {
+            "mean": 0.9862255026685286
+          },
+          "n_seeds": 5
+        }
+      }
+    },
+    "epoch 7": {
+      "original_space": {
+        "silhouette": 0.07654815912246704,
+        "davies_bouldin": 3.141212337641154,
+        "calinski_harabasz": 210.03842527908242,
+        "dunn": 0.1948482843971766,
+        "knn_acc": 0.7250308261405672,
+        "knn_macro_f1": 0.7139477664585163,
+        "pred_source": "model head",
+        "test_accuracy": 0.6713933415536375
+      },
+      "projections": {
+        "pca": {
+          "silhouette": {
+            "mean": -0.03425072878599167,
+            "std": 0.0
+          },
+          "trustworthiness": {
+            "mean": 0.8943009345127282
+          },
+          "n_seeds": 1
+        },
+        "tsne": {
+          "silhouette": {
+            "mean": 0.10100670307874679,
+            "std": 0.0002498013172632993
+          },
+          "trustworthiness": {
+            "mean": 0.9883523279156847
+          },
+          "n_seeds": 5
+        },
+        "umap": {
+          "silhouette": {
+            "mean": 0.09782961010932922,
+            "std": 0.004953433921968726
+          },
+          "trustworthiness": {
+            "mean": 0.9839551099245012
+          },
+          "n_seeds": 5
+        }
+      }
+    }
+  }
+}

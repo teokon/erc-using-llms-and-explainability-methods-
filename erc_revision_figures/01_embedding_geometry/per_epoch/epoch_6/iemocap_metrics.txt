@@ -1,0 +1,15 @@
+IEMOCAP — epoch 6
+
+ORIGINAL 1024-d space (primary evidence, no projection):
+  silhouette         +0.0782
+  davies_bouldin     3.125   (lower better)
+  calinski_harabasz  211.6
+  dunn               0.2079   (higher better)
+  test accuracy      0.6720   [model head]
+  kNN probe acc      0.7232
+  kNN probe macro-F1 0.7113
+
+2-d projections (robustness):
+  PCA    silhouette -0.0286 ± 0.0000 (1 seed(s)) | trustworthiness 0.8928
+  t-SNE  silhouette +0.1055 ± 0.0003 (5 seed(s)) | trustworthiness 0.9900
+  UMAP   silhouette +0.0913 ± 0.0053 (5 seed(s)) | trustworthiness 0.9862

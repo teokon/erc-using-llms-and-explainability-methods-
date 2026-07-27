@@ -1,0 +1,44 @@
+{
+  "original_space": {
+    "silhouette": -0.0024791851174086332,
+    "davies_bouldin": 6.6394466225134146,
+    "calinski_harabasz": 21.825248740528544,
+    "dunn": 0.13020601682938582,
+    "knn_acc": 0.6189889025893958,
+    "knn_macro_f1": 0.621372054753182,
+    "pred_source": "k-NN probe (no trained head)",
+    "test_accuracy": 0.6189889025893958
+  },
+  "projections": {
+    "pca": {
+      "silhouette": {
+        "mean": -0.05554453283548355,
+        "std": 0.0
+      },
+      "trustworthiness": {
+        "mean": 0.9021202014166401
+      },
+      "n_seeds": 1
+    },
+    "tsne": {
+      "silhouette": {
+        "mean": -0.08250196874141694,
+        "std": 0.0010814029429336524
+      },
+      "trustworthiness": {
+        "mean": 0.9991472835195182
+      },
+      "n_seeds": 5
+    },
+    "umap": {
+      "silhouette": {
+        "mean": -0.1019010841846466,
+        "std": 0.01351322604953797
+      },
+      "trustworthiness": {
+        "mean": 0.9977499162426993
+      },
+      "n_seeds": 5
+    }
+  }
+}
