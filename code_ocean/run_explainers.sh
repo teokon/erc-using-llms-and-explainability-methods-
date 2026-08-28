@@ -38,3 +38,11 @@ for ds in meld iemocap; do
 done
 
 echo "[explainers] done -> $OUT  (per-explainer faithfulness summaries + saved attributions)"
+
+# --- Cross-corpus zero-shot generalization (reviewer note f) ---
+# Uses the SAME trained checkpoints staged in /data (no extra inputs). Evaluates each model on the
+# other corpus over the shared emotions {anger, happy, neutral, sadness}. Writes to $ERC_RESULTS.
+echo "== cross_dataset_eval.py (zero-shot MELD<->IEMOCAP) =="
+python Explainability/cross_dataset_eval.py \
+  || echo "  [warn] cross_dataset_eval failed (need both models' *_BEST checkpoints in /data)"
+echo "[cross-dataset] done -> $ERC_RESULTS/cross_dataset/"

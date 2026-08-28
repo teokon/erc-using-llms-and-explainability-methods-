@@ -75,6 +75,10 @@ recommended — on CPU keep `ERC_LIMIT` small (LIME does ~100 forward passes per
 RoBERTa-large). Output: `/results/faithfulness_live/faithfulness_{meld,iemocap}_context_summary.csv`
 plus the saved attributions, showing each explainer's faithfulness vs. the Random baseline.
 
+`run_explainers.sh` also runs **`cross_dataset_eval.py`** (reviewer note f): zero-shot cross-corpus
+generalization (MELD↔IEMOCAP over the shared emotions), which reuses the same staged `*_BEST`
+checkpoints and writes `results/cross_dataset/cross_dataset_seed42.csv`.
+
 Optimus is intentionally excluded from the live run (it needs the vendored library + `numpy<2` and is
 far more expensive); its results are provided via the saved-artifact path above.
 
