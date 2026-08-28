@@ -78,7 +78,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--seed", type=int, default=42, help="which seed's BEST checkpoints to use")
     ap.add_argument("--out_dir", default=str(RESULTS_DIR / "cross_dataset"))
+    ap.add_argument("--save_preds", action="store_true",
+                    help="also save per-example (gold, pred) so the metrics can be recomputed later "
+                         "WITHOUT the models (a tiny artifact for the Code Ocean lightweight run)")
     args = ap.parse_args()
+    pred_rows = []
 
     predict_canonical.tok = AutoTokenizer.from_pretrained(
         "roberta-large", use_fast=True, add_prefix_space=True)
@@ -99,6 +103,9 @@ def main():
             mf1 = f1_score(gold, pred, average="macro", labels=SHARED)
             rows.append({"target": target, "n": n, "role": role, "model": which,
                          "accuracy": acc, "weighted_f1": wf1, "macro_f1": mf1})
+            if args.save_preds:
+                pred_rows += [{"target": target, "role": role, "model": which, "gold": g, "pred": p}
+                              for g, p in zip(gold, pred)]
             print(f"  target={target:8s} n={n:4d} | {role:9s} model={which:8s}"
                   f" -> acc={acc*100:5.1f}  weightedF1={wf1*100:5.1f}  macroF1={mf1*100:5.1f}")
         print()
@@ -107,6 +114,13 @@ def main():
     out = out_dir / f"cross_dataset_seed{args.seed}.csv"
     pd.DataFrame(rows).to_csv(out, index=False)
     print(f"[saved] {out}")
+
+    if args.save_preds:
+        # tiny artifact (predictions only) so the metrics can be recomputed model-free
+        pred_dir = CHECKPOINTS_DIR / "cross_dataset_preds"; pred_dir.mkdir(parents=True, exist_ok=True)
+        pp = pred_dir / f"cross_dataset_preds_seed{args.seed}.csv"
+        pd.DataFrame(pred_rows).to_csv(pp, index=False)
+        print(f"[saved] {pp}  ({len(pred_rows)} rows) -- feeds cross_dataset_from_preds.py")
 
 
 if __name__ == "__main__":

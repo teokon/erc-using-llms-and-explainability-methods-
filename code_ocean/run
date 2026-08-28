@@ -21,6 +21,7 @@ run paper_plots_from_scores.py       # cumulative contribution + Coverage@10% (s
 run explanation_figures.py           # faithfulness metrics/curves + agreement figures (notes 5 & 7)
 run explanation_agreement_matrix.py  # cross-method Spearman / top-20% Jaccard matrices (note 7)
 run build_note7_context.py           # note-7 agreement response for the context-aware model
+run cross_dataset_from_preds.py      # cross-corpus zero-shot metrics (note 7f) from saved predictions
 
 # build_reviewer_response.py assembles the full reviewer-response .docx but needs the training-result
 # CSVs + all figures (not part of the minimal capsule /data); run it against a full ./checkpoints:

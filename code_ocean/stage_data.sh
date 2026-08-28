@@ -17,7 +17,7 @@ echo "Staging capsule inputs from: $SRC"
 #   faith_context  saved attributions (context-aware model)      -> agreement matrix, note-7
 #   faithfulness   per-explainer summary/curve CSVs              -> explanation_figures
 #   agreement      per-example CSV + summary JSON                -> explanation_figures, note-7
-for d in faith_final faith_context faithfulness agreement; do
+for d in faith_final faith_context faithfulness agreement cross_dataset_preds; do
   if [ -d "$SRC/$d" ]; then cp -r "$SRC/$d" "$DST/"; echo "  staged $d"; else echo "  [skip] $SRC/$d not found"; fi
 done
 
