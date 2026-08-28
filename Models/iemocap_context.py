@@ -51,11 +51,15 @@ LABEL_COL   = "Emotion"
 
 
 def build_iemocap_context(df, tokenizer, mode="both", max_length=512,
-                          speaker_caps=True, insert_space_between_utts=True,
+                          speaker_caps=True, use_speaker=True,
+                          insert_space_between_utts=True,
                           include_raw_text=True, debug_n=3):
     """Return an HF Dataset of tokenized EmoBERTa-style context windows.
 
     mode: "both" | "past" | "future" (which side(s) of the target to expand).
+    use_speaker: if False, drop the "Name: " speaker prefix from every utterance (context is
+                 kept, speaker tags removed) -- the context-without-speaker cell of the
+                 context/speaker 2x2 ablation (reviewer note a).
     """
     assert mode in ("both", "past", "future"), f"bad mode: {mode}"
     import pandas as pd
@@ -109,7 +113,8 @@ def build_iemocap_context(df, tokenizer, mode="both", max_length=512,
         labs  = g[LABEL_COL].tolist()
         turns = g[UTTID_COL].tolist()
 
-        seg_text = [f"{nm}: {u}" for nm, u in zip(names, utts)]
+        seg_text = ([f"{nm}: {u}" for nm, u in zip(names, utts)] if use_speaker
+                    else [str(u) for u in utts])
         seg_ids0 = [enc_no_space(x) for x in seg_text]
         seg_ids1 = [enc_with_space(x) for x in seg_text] if insert_space_between_utts else seg_ids0
         n = len(seg_text)

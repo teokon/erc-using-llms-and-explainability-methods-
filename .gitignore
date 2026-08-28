@@ -24,3 +24,7 @@ Reviewer_Response_*.docx
 
 # Local tool settings
 .claude/
+
+# Internal reviewer-response notes (not for public release)
+revision2_response/
+revision*_response/

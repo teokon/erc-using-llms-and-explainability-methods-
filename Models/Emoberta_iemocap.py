@@ -62,7 +62,13 @@ TRAIN_CSV = f"{_DATA}/iemocap_train.csv"
 VAL_CSV   = f"{_DATA}/iemocap_val.csv"
 TEST_CSV  = f"{_DATA}/iemocap_test.csv"
 
-OUTPUT_DIR = CHECKPOINTS_DIR / "emoberta_iemocap_large_both"
+# Speaker tags on/off (reviewer note a: disentangle context from speaker tags).
+# SPEAKER_TAGS=0 keeps the SAME context windows but drops the "Name: " speaker prefix, and writes
+# to a separate "_nospeaker" folder so it never clobbers the main model.
+USE_SPEAKER = os.environ.get("SPEAKER_TAGS", "1") == "1"
+
+OUTPUT_DIR = CHECKPOINTS_DIR / ("emoberta_iemocap_large_both" if USE_SPEAKER
+                                else "emoberta_iemocap_large_both_nospeaker")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 MODEL_BASE = "roberta-large"
@@ -116,9 +122,9 @@ val_df   = pd.read_csv(VAL_CSV)
 test_df  = pd.read_csv(TEST_CSV)
 print("Raw rows:", len(train_df), len(val_df), len(test_df))
 
-train_ds_full = ic.build_iemocap_context(train_df, tok, mode=CONTEXT_MODE, max_length=MAX_LEN, debug_n=3)
-val_ds_full   = ic.build_iemocap_context(val_df,   tok, mode=CONTEXT_MODE, max_length=MAX_LEN, debug_n=1)
-test_ds_full  = ic.build_iemocap_context(test_df,  tok, mode=CONTEXT_MODE, max_length=MAX_LEN, debug_n=1)
+train_ds_full = ic.build_iemocap_context(train_df, tok, mode=CONTEXT_MODE, max_length=MAX_LEN, use_speaker=USE_SPEAKER, debug_n=3)
+val_ds_full   = ic.build_iemocap_context(val_df,   tok, mode=CONTEXT_MODE, max_length=MAX_LEN, use_speaker=USE_SPEAKER, debug_n=1)
+test_ds_full  = ic.build_iemocap_context(test_df,  tok, mode=CONTEXT_MODE, max_length=MAX_LEN, use_speaker=USE_SPEAKER, debug_n=1)
 print("Sizes:", len(train_ds_full), len(val_ds_full), len(test_ds_full))
 
 # ---- save constructed context CSVs (inspectable) ----

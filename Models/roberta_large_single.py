@@ -45,6 +45,10 @@ from transformers import (AutoTokenizer, AutoModelForSequenceClassification,
 
 DATASET = os.environ.get("DATASET", "meld").lower()
 SEED = int(os.environ.get("SEED", "42"))
+# KEEP_SPEAKER=1 keeps the "Speaker: " prefix on the target utterance (no context, WITH speaker
+# tag) -- the no-context/speaker cell of the reviewer-note-a 2x2. Default 0 = strip it (no context,
+# no speaker), the original single-utterance baseline.
+KEEP_SPEAKER = os.environ.get("KEEP_SPEAKER", "0") == "1"
 CK = str(CHECKPOINTS_DIR)
 
 SRC = {
@@ -58,7 +62,7 @@ SRC = {
                 "test": "test_constructed_both.csv"},
 }[DATASET]
 
-OUTPUT_DIR = Path(f"{CK}/roberta_large_single_{DATASET}")
+OUTPUT_DIR = Path(f"{CK}/roberta_large_single_{DATASET}" + ("_speaker" if KEEP_SPEAKER else ""))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 MODEL_BASE = "roberta-large"
@@ -73,10 +77,11 @@ SPEAKER_RE = re.compile(r"^[^:]{1,30}:\s*")
 
 
 def target_utterance(ctx: str) -> str:
-    """Target utterance between the two '</s></s>' markers, with the speaker prefix removed."""
+    """Target utterance between the two '</s></s>' markers. The speaker prefix is removed by
+    default; with KEEP_SPEAKER=1 it is retained (no-context/with-speaker ablation cell)."""
     parts = str(ctx).split("</s></s>")
     t = parts[1].strip() if len(parts) == 3 else str(ctx).strip()
-    return SPEAKER_RE.sub("", t, count=1).strip()
+    return t.strip() if KEEP_SPEAKER else SPEAKER_RE.sub("", t, count=1).strip()
 
 
 def load_split(name):

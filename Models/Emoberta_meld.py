@@ -77,8 +77,14 @@ TRAIN_CSV = f"{_DATA}/train_sent_emo.csv"
 VAL_CSV   = f"{_DATA}/dev_sent_emo.csv"
 TEST_CSV  = f"{_DATA}/test_sent_emo.csv"
 
+# Speaker tags on/off (reviewer note a: disentangle context from speaker tags).
+# SPEAKER_TAGS=0 builds the SAME context windows but WITHOUT the "Speaker: " prefix, so the
+# effect of context can be measured independently of speaker identity. Output goes to a separate
+# "_nospeaker" folder so it never clobbers the main model.
+USE_SPEAKER = os.environ.get("SPEAKER_TAGS", "1") == "1"
+
 # Where checkpoints / constructed CSVs / results go.
-OUTPUT_DIR = CHECKPOINTS_DIR / "emoberta_meld_large"
+OUTPUT_DIR = CHECKPOINTS_DIR / ("emoberta_meld_large" if USE_SPEAKER else "emoberta_meld_large_nospeaker")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Columns
@@ -162,7 +168,7 @@ import numpy as np
 from datasets import Dataset
 
 def build_context_dataset_with_text_target_has_speaker(
-    df, tokenizer, max_length=512, speaker_caps=True, debug_n=3
+    df, tokenizer, max_length=512, speaker_caps=True, use_speaker=USE_SPEAKER, debug_n=3
 ):
     df = df.copy()
 
@@ -207,8 +213,9 @@ def build_context_dataset_with_text_target_has_speaker(
         if speaker_caps:
             speakers = [s.upper() for s in speakers]
 
-        # segment text WITH speaker for all
-        seg_text = [f"{s}: {u}" for s, u in zip(speakers, utts)]
+        # segment text: WITH speaker prefix (default), or utterance-only when use_speaker=False
+        seg_text = ([f"{s}: {u}" for s, u in zip(speakers, utts)] if use_speaker
+                    else [str(u) for u in utts])
 
         # IMPORTANT: encode each segment WITHOUT specials
         seg_ids  = [tokenizer.encode(x, add_special_tokens=False) for x in seg_text]
