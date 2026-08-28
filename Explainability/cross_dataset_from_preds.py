@@ -16,10 +16,29 @@ import pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 from erc_paths import CHECKPOINTS_DIR, RESULTS_DIR
 
+import numpy as np
 import pandas as pd
-from sklearn.metrics import accuracy_score, f1_score
 
 SHARED = ["anger", "happy", "neutral", "sadness"]
+
+
+def _f1_scores(gold, pred, labels):
+    """Accuracy, weighted-F1, macro-F1 without sklearn (keeps the lightweight capsule dep-free)."""
+    gold = np.asarray(gold); pred = np.asarray(pred)
+    acc = float((gold == pred).mean())
+    f1s, support = [], []
+    for c in labels:
+        tp = int(((pred == c) & (gold == c)).sum())
+        fp = int(((pred == c) & (gold != c)).sum())
+        fn = int(((pred != c) & (gold == c)).sum())
+        prec = tp / (tp + fp) if (tp + fp) else 0.0
+        rec = tp / (tp + fn) if (tp + fn) else 0.0
+        f1 = 2 * prec * rec / (prec + rec) if (prec + rec) else 0.0
+        f1s.append(f1); support.append(int((gold == c).sum()))
+    f1s = np.array(f1s); support = np.array(support)
+    macro = float(f1s.mean())
+    weighted = float((f1s * support).sum() / support.sum()) if support.sum() else 0.0
+    return acc, weighted, macro
 
 
 def main():
@@ -38,9 +57,7 @@ def main():
     print(f"Shared classes: {SHARED}  (joy<->happiness merged)\n")
     rows = []
     for (target, role, model), g in df.groupby(["target", "role", "model"], sort=False):
-        acc = accuracy_score(g["gold"], g["pred"])
-        wf1 = f1_score(g["gold"], g["pred"], average="weighted", labels=SHARED)
-        mf1 = f1_score(g["gold"], g["pred"], average="macro", labels=SHARED)
+        acc, wf1, mf1 = _f1_scores(g["gold"].tolist(), g["pred"].tolist(), SHARED)
         rows.append({"target": target, "n": len(g), "role": role, "model": model,
                      "accuracy": acc, "weighted_f1": wf1, "macro_f1": mf1})
         print(f"  target={target:8s} n={len(g):4d} | {role:9s} model={model:8s}"
